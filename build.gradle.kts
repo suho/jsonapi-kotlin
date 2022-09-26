@@ -1,15 +1,10 @@
-repositories {
-    mavenCentral()
-}
-
 plugins {
     kotlin("multiplatform") version "1.7.10"
     kotlin("plugin.serialization") version "1.7.10"
-    id("maven-publish")
 }
 
 group = "dev.suho"
-version = "1.0-SNAPSHOT"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
@@ -40,7 +35,29 @@ kotlin {
         isMingwX64 -> mingwX64("native")
         else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
     }
+
     
+    iosArm32 {
+        binaries {
+            framework {
+                baseName = "library"
+            }
+        }
+    }
+    iosArm64 {
+        binaries {
+            framework {
+                baseName = "library"
+            }
+        }
+    }
+    iosX64 {
+        binaries {
+            framework {
+                baseName = "library"
+            }
+        }
+    }
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -58,5 +75,11 @@ kotlin {
         val jsTest by getting
         val nativeMain by getting
         val nativeTest by getting
+        val iosArm32Main by getting
+        val iosArm32Test by getting
+        val iosArm64Main by getting
+        val iosArm64Test by getting
+        val iosX64Main by getting
+        val iosX64Test by getting
     }
 }
