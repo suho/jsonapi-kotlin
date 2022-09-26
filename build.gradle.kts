@@ -1,6 +1,7 @@
 plugins {
     kotlin("multiplatform") version "1.7.10"
     kotlin("plugin.serialization") version "1.7.10"
+    id("maven-publish")
 }
 
 group = "dev.suho"
@@ -8,6 +9,10 @@ version = "1.0.0"
 
 repositories {
     mavenCentral()
+}
+
+publishing {
+    publications {}
 }
 
 kotlin {
